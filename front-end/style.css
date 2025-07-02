@@ -1,5 +1,19 @@
 @charset "UTF-8";
 
+@media (max-width: 480px) {
+    input.campo {
+        font-size: 14px;
+    }
+
+    button.botao {
+        font-size: 14px;
+    }
+
+    label.tarefa {
+        font-size: 14px;
+    }
+}
+
 * {
     margin: 0; padding: 0; box-sizing: border-box;
 }
@@ -11,8 +25,9 @@ body {
 header{
     display: flex;
     justify-content: center;
-    height: 0px;
-
+    height: auto;
+    padding: 0px 0px ;
+    background-color: #1f1f1f;
 }
 
 header > h1 {
@@ -22,7 +37,6 @@ header > h1 {
 
 main#fundo{
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-flow: column;
     
@@ -31,8 +45,10 @@ main#fundo{
 }
 
 section#conteiner {
-    width: 370px;
-    height: 370px;
+    width: 80vw;
+    height: auto;
+    max-width: 600px;
+    
 }
 
 div#pergunta{
@@ -41,23 +57,30 @@ div#pergunta{
     justify-content: space-around;
     background-color: white;
     height: 70px;
-    width: 100%;
+    max-width: 600px; width: 80vw;
     border-radius: 24px;
     margin: 20px 0px;
 }
 
 input.campo {
-    padding: 8px 10px;
+    max-width: 400px; width: 50vw;
+    height: 35px;
+    padding-left: 10px;
     border-radius: 14px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.644);
 }
 
+
+
+
 button.botao {
-    padding: 8px 10px;
+    max-width: 100px ; width: 16vw;
+    height: 35px;
     border-radius: 14px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.644);
+    
 }
 
 
