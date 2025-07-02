@@ -17,12 +17,15 @@ function adicionarTarefa(){
     
     // Criando o checkbox
     const checkbox = document.createElement('input')
+    checkbox.type = 'checkbox'
+    checkbox.id = 'tarefa-' + Date.now();
     checkbox.classList.add('checkbox')
 
     // Crianso o label. Exe: <label class="tarefa"> Texto </label>
     const label = document.createElement('label')
     label.classList.add('tarefa')
-    label.textContent = texto; // Adicionar o texto dentro do label
+    label.htmlFor = checkbox.id
+    label.textContent = texto // Adicionar o texto dentro do label
 
     // botão Editar
     const editar = document.createElement('button')

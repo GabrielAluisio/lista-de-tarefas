@@ -69,6 +69,7 @@ input.campo {
     border-radius: 14px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.644);
+    
 }
 
 
@@ -80,7 +81,7 @@ button.botao {
     border-radius: 14px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.644);
-    
+    cursor: pointer;
 }
 
 
