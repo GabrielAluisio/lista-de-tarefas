@@ -14,23 +14,12 @@
     <main id="fundo">
         <section id="conteiner">
             <div id='pergunta'>
-                <input type="text" name="campo" class="campo" placeholder="Digite sua tarefa..." maxlength="30">
+                <input type="text" name="campo" class="campo" 
+                placeholder="Digite sua tarefa..." maxlength="30">
                 <button class="botao" onclick="adicionarTarefa()">Adicionar</button> 
             </div>
 
-            <div id="tarefas">
-                <div class="item-tarefa">
-                    <input type="checkbox" name="checkbox" id="checkbox" class="checkbox">
-                    <label for="checkbox" class="tarefa">Descrição da tarefa aqui</label>
-                    
-                    <button class="editar" aria-label="Editar tarefa">
-                        <span class="material-symbols-outlined">edit</span>
-                    </button>
-                    
-                    <button class="excluir" aria-label="Excluir tarefa">
-                        <span class="material-symbols-outlined">delete</span>
-                    </button>
-                </div>
+            <div id="tarefas"></div>
             </div>
         </section>
     </main>

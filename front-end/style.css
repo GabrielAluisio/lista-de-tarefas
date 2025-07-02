@@ -1,4 +1,23 @@
 @charset "UTF-8";
+@keyframes cairSuave {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+        max-height: 0;
+        padding: 0 10px;
+        margin-bottom: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 100px;
+        padding: 8px 10px;
+        
+    }
+}
+
+
+
 
 @media (max-width: 480px) {
     input.campo {
@@ -18,7 +37,13 @@
     margin: 0; padding: 0; box-sizing: border-box;
 }
 
-body {
+body, html{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -31,24 +56,25 @@ header{
 }
 
 header > h1 {
-    margin-top: 50px;
+    padding: 40px 0px 20px 0px;
     color: white;
 }
 
 main#fundo{
-    display: flex;
-    align-items: center;
-    flex-flow: column;
-    
-    background-color: #1f1f1f;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #1f1f1f;
+    flex-grow: 1; /* ocupar todo espaço restante */
+    overflow-y: auto;
 }
 
 section#conteiner {
     width: 80vw;
     height: auto;
     max-width: 600px;
-    
+    padding-top: 60px;
 }
 
 div#pergunta{
@@ -67,32 +93,46 @@ input.campo {
     height: 35px;
     padding-left: 10px;
     border-radius: 14px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(0, 0, 0, 0.644);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.699);
     
 }
 
+input.campo:focus {
+    outline: none;
+}
 
+input.campo:active {
+    background-color: #e7e7e7; 
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
 
 
 button.botao {
-    max-width: 100px ; width: 16vw;
+    max-width: 100px ; width: 16vw; min-width: 70px;
     height: 35px;
     border-radius: 14px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(0, 0, 0, 0.644);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.699);
     cursor: pointer;
 }
+ 
+button.botao:active{
+    background-color: #e7e7e7; 
+    transform: scale(0.98);
+}
+
 
 
 div#tarefas {
     display: flex;
+    opacity: 0;
     flex-direction: column;
     gap: 10px;
     background-color: white;
     padding: 10px;
     border-radius: 24px;
-    max-height: 250px; /* rolagem se tiver muitas */
+    margin-bottom: 20px; 
     overflow-y: auto;
 }
 
@@ -103,6 +143,11 @@ div#tarefas {
     padding: 8px 12px;
     border-bottom: 1px solid #ccc;
 }
+
+.item-tarefa.animar {
+    animation: cairSuave 0.3s ease forwards;
+}
+
 
 label.tarefa {
     flex: 1;
@@ -121,6 +166,15 @@ button.editar:hover {
      color: #007bff;
 }
 
+input.campo-edicao {
+    min-width: 0;
+    border: 0px;
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.356);
+    flex: 1;
+    font-size: 16px;
+}
+
 button.excluir {
     border: 0px;
     cursor: pointer;
@@ -137,4 +191,10 @@ input[type='checkbox'] {
     width: 20px;
     height: 20px;
     cursor: pointer;
+}
+
+.concluida {
+    text-decoration: line-through;
+    color: gray;
+    opacity: 0.7;
 }
