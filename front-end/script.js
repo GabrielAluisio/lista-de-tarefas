@@ -9,16 +9,39 @@ campoInput.addEventListener('keydown', (e) => {
 
 
 function adicionarTarefa(){
-    const tarefas = document.getElementById('tarefas')
-    
-    // Pega o texto digitado e tira os espaços no começo e no final.
-    const texto = campoInput.value.trim()
+    const texto = campoInput.value.trim();
 
     // confere se o usúario digitou nada. 
     if (texto == ''){
         alert('Digite alguma tarefa antes de adicionar!')
         return
     }
+
+    // Conectando a minha API em Python
+    fetch('http://127.0.0.1:5000/tarefas', {
+        method: 'POST',
+
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({ 
+            titulo: texto
+        })
+    })
+        .then(Response => Response.json())
+        .then(data => {
+            mostrarNaTela(data)
+            campoInput.value = ''
+        })
+        .catch((error) => {
+            console.error('Erro ao salvar tarefa:', error)
+        })
+
+}
+
+function mostrarNaTela(tarefa){
+    const tarefas = document.getElementById('tarefas')
 
     // criando uma div com uma class:".item-tarefa".
     const novaTarefa = document.createElement('div')
@@ -28,18 +51,18 @@ function adicionarTarefa(){
     // Criando o checkbox
     const checkbox = document.createElement('input')
     checkbox.type = 'checkbox'
-    checkbox.id = 'tarefa-' + Date.now();
+    checkbox.id = 'tarefa-' + tarefa.id;
     checkbox.classList.add('checkbox')
     checkbox.addEventListener('change', () => {
         label.classList.toggle('concluida');
     });
 
 
-    // Crianso o label. Exe: <label class="tarefa"> Texto </label>
+    // Crianso o label. Ex: <label class="tarefa"> Texto </label>
     const label = document.createElement('label')
     label.classList.add('tarefa')
     label.htmlFor = checkbox.id
-    label.textContent = texto // Adicionar o texto dentro do label
+    label.textContent = tarefa.titulo // Adicionar o texto dentro do label
 
     // botão Editar
     const editar = document.createElement('button')
@@ -103,10 +126,4 @@ function adicionarTarefa(){
     // Adicionando a novaTarefa no div id='tarefas'
     tarefas.appendChild(novaTarefa)
     tarefas.style.opacity = '1';
-
-    campoInput.value = ''
-
-
-
 }
-
