@@ -29,11 +29,20 @@ function adicionarTarefa(){
             titulo: texto
         })
     })
-        .then(Response => Response.json())
+        .then((Response) => {
+            if (!Response.ok){
+                throw new Error (`Erro a realizar a requisisão, status: ${Response.status}`)
+            }
+
+            return Response.json()
+        })
+
         .then(data => {
+            console.log('Tarefa salva:', data)
             mostrarNaTela(data)
             campoInput.value = ''
         })
+
         .catch((error) => {
             console.error('Erro ao salvar tarefa:', error)
         })
